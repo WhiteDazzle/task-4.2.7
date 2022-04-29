@@ -1,0 +1,59 @@
+.page {
+      white-space: nowrap;
+      font-size: 30px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 100px;
+      padding-top: 50px;
+      min-height: 1000px;
+      width: 700px;
+      background-color: #C4C4C4;
+
+}
+
+
+.inputText {
+      padding-left: 13px;
+      font-size: 48px;
+      width: 500px;
+      height: 61px;
+}
+
+.autocomplite__elem {
+      margin-block-start: 0;
+      margin-block-end: 0;
+      padding-left: 13px;
+      border: 2px solid black;
+      width: 500px;
+      height: 44px;
+      background: #E3E3E3;
+      overflow: hidden;
+}
+
+.autocomplite__elem:hover {
+      background: #65CDF9;
+}
+.selected-repos {
+      position: absolute;
+      top: 400px;
+}
+
+.selected-repo {
+      position: relative;
+      width: 510px;
+      overflow: hidden;
+      background: #E27BEB;
+      border: 1px solid #000000;
+}
+
+.button-remove {
+      
+      position: absolute;
+      top: 80px;
+      right: 40px;
+      height: 60px;
+      width: 60px;
+      background-color: #E27BEB;
+      background-size: 100%;
+      background-image: url(img/button-delete.svg);
+}
