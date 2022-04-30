@@ -13,7 +13,7 @@ function getRepos (key) {
 
 function createAutoComplite(reposTitle) {
   autoConpliteWrapper.innerHTML = '';
-  let reposNameText = document.createElement(`p`);
+  const reposNameText = document.createElement(`p`);
   reposNameText.textContent = reposTitle;
   reposNameText.classList.add(`autocomplite__elem`);
 
@@ -21,48 +21,47 @@ function createAutoComplite(reposTitle) {
 } 
 
 function createAddedRepo (repos) {
-  let reposCard = document.createElement(`div`);
+  const reposCard = document.createElement(`div`);
   reposCard.classList.add(`selected-repo`);
   console.log(repos)
 
-  let ButtonRemoveRepos = document.createElement('button');
+  const ButtonRemoveRepos = document.createElement('button');
   ButtonRemoveRepos.classList.add(`button-remove`)
   reposCard.append(ButtonRemoveRepos);
 
-  let liName = document.createElement('p');
+  const liName = document.createElement('p');
   liName.innerHTML = `Name: ${repos.title}`;
   reposCard.append(liName);
 
-  let liOwner = document.createElement('p');
+  const liOwner = document.createElement('p');
   liOwner.innerHTML = `Owner: ${repos.user.login}`;
   reposCard.append(liOwner);
 
-  let liStarts = document.createElement('p');
+  const liStarts = document.createElement('p');
   liStarts.innerHTML = `stars: ${repos.score}`;
   reposCard.append(liStarts);
 
   selectedRepos.appendChild(reposCard);
 }
  
-function autoConplite(input) {
+async function autoConplite(input) {
   if(!input.value) {
     autoConpliteWrapper.innerHTML = '';
     return
   }
+  try {
+    const repos = await getRepos(input.value);
+    if(!repos.items) return
 
-  getRepos(input.value)
-    .then(repos => {
-      if(!repos.items) return
-      autoConplites = repos.items.slice(0, 5);
-      let fragment = document.createDocumentFragment();
+    autoConplites = repos.items.slice(0, 5);
+    const fragment = document.createDocumentFragment();
 
       autoConplites.forEach(element => {
-        let card = createAutoComplite(element.title);
+        const card = createAutoComplite(element.title);
         fragment.appendChild(card)
       });
       autoConpliteWrapper.appendChild(fragment);
-    })
-    .catch(err => console.log(err))
+  } catch (e) {console.log(e)}
 } 
 
 const debounce = (fn, debounceTime) => {
