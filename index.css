@@ -3,10 +3,10 @@
       font-size: 30px;
       margin-left: auto;
       margin-right: auto;
-      padding-left: 100px;
+      padding-left: 150px;
       padding-top: 50px;
       min-height: 763px;
-      width: 700px;
+      width: 661px;
       background-color: #C4C4C4;
 
 }
@@ -40,6 +40,7 @@
 
 .selected-repo {
       position: relative;
+      height: auto;
       width: 510px;
       overflow: hidden;
       background: #E27BEB;
@@ -51,6 +52,7 @@
       margin-block-start: 5px;
       margin-block-end: 5px;
       width: 400px;
+      font-size: 24px;
       overflow: hidden;
 }
 
@@ -59,8 +61,8 @@
       position: absolute;
       top: 30px;
       right: 34px;
-      height: 65px;
-      width: 65px;
+      height: 40px;
+      width: 40px;
       background-color: #E27BEB;
       background-size: 100%;
       background-image: url(img/button-delete.svg);
