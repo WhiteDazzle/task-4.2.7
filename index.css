@@ -5,7 +5,7 @@
       margin-right: auto;
       padding-left: 100px;
       padding-top: 50px;
-      min-height: 1000px;
+      min-height: 763px;
       width: 700px;
       background-color: #C4C4C4;
 
@@ -46,14 +46,26 @@
       border: 1px solid #000000;
 }
 
+.selected-repo  p {
+      margin-left: 10px;
+      margin-block-start: 5px;
+      margin-block-end: 5px;
+      width: 400px;
+      overflow: hidden;
+}
+
 .button-remove {
       
       position: absolute;
-      top: 80px;
-      right: 40px;
-      height: 60px;
-      width: 60px;
+      top: 30px;
+      right: 34px;
+      height: 65px;
+      width: 65px;
       background-color: #E27BEB;
       background-size: 100%;
       background-image: url(img/button-delete.svg);
+      border: none; 
+      outline: none;
+
+
 }
