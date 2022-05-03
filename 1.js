@@ -5,8 +5,7 @@ let autoConplites
 let selectedRepos = document.querySelector('.selected-repos');
 
 function getRepos (key) {
-  console.log(key)
-  return fetch(`https://api.github.com/search/issues?q=${key}&sort=stars&order=desc`).then(
+  return fetch(`https://api.github.com/search/repositories?q=${key}&per_page=5&page=1`).then(
     response => response.json(),
   )
 }
@@ -23,22 +22,21 @@ function createAutoComplite(reposTitle) {
 function createAddedRepo (repos) {
   const reposCard = document.createElement(`div`);
   reposCard.classList.add(`selected-repo`);
-  console.log(repos)
 
   const ButtonRemoveRepos = document.createElement('button');
   ButtonRemoveRepos.classList.add(`button-remove`)
   reposCard.append(ButtonRemoveRepos);
 
   const liName = document.createElement('p');
-  liName.innerHTML = `Name: ${repos.title}`;
+  liName.innerHTML = `Name: ${repos.name}`;
   reposCard.append(liName);
-
+ 
   const liOwner = document.createElement('p');
-  liOwner.innerHTML = `Owner: ${repos.user.login}`;
+  liOwner.innerHTML = `Owner: ${repos.owner.login}`;
   reposCard.append(liOwner);
 
   const liStarts = document.createElement('p');
-  liStarts.innerHTML = `stars: ${repos.score}`;
+  liStarts.innerHTML = `stars: ${repos.stargazers_count}`;
   reposCard.append(liStarts);
 
   selectedRepos.appendChild(reposCard);
@@ -53,11 +51,11 @@ async function autoConplite(input) {
     const repos = await getRepos(input.value);
     if(!repos.items) return
 
-    autoConplites = repos.items.slice(0, 5);
+    autoConplites = repos.items;
     const fragment = document.createDocumentFragment();
 
       autoConplites.forEach(element => {
-        const card = createAutoComplite(element.title);
+        const card = createAutoComplite(element.name);
         fragment.appendChild(card)
       });
       autoConpliteWrapper.appendChild(fragment);
